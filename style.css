@@ -80,4 +80,9 @@ body{
   position:fixed;right:20px;bottom:20px;
   background:#0f172a;border:2px solid #38bdf8;
   border-radius:16px;width:260px;padding:12px;
+
+  .instagram-link {
+  text-decoration: none;
+  color: inherit;
+  display: contents;
 }
