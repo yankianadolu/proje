@@ -18,7 +18,7 @@ canvas#bg{position:fixed;inset:0;z-index:-1;}
 }
 
 .logo{display:flex;align-items:center;gap:8px;color:#38bdf8;font-weight:bold;}
-.logo img{width:32px;height:32px;}
+.logo img{width:65px;height:65px;object-fit:contain;border-radius:50%;transition:transform 0.3s ease;}
 
 .nav-links button{
   background:none;border:none;color:#e5e7eb;
