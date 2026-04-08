@@ -58,6 +58,9 @@ async function askAI() {
     responseBox.innerText = "Bağlantı hatası: " + err.message;
   }
 }
+document.getElementById("ai-input").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") askAI();
+});
 
 /* SURVEY */
 const surveyQuestions=[
