@@ -1,4 +1,4 @@
-const ANTHROPIC_API_KEY = "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";
+const ANTHROPIC_API_KEY = "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";
 
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
