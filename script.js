@@ -69,4 +69,6 @@ function answerSurvey(val) {
     document.getElementById("survey").style.display = "none";
   }
 }
-
+function toggleChat() {
+  document.querySelector('.ai-widget').classList.toggle('open');
+}
