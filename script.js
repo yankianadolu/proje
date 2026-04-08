@@ -1,4 +1,4 @@
-const ANTHROPIC_API_KEY = "sk-ant-xxx"; // kendi key'ini buraya yaz
+const ANTHROPIC_API_KEY = "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";
 
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
