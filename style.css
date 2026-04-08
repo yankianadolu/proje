@@ -38,6 +38,53 @@ body{
   box-shadow:0 0 20px rgba(56,189,248,.15);transition:.3s;
 }
 .card:hover{transform:translateY(-6px) scale(1.03);}
+.card-grid-two {
+  grid-template-columns: repeat(2, minmax(200px, 280px));
+  justify-content: center;
+}
+
+.card { cursor: pointer; }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 998;
+  padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+
+.modal-box {
+  background: #0f172a;
+  border: 1px solid #38bdf8;
+  border-radius: 20px;
+  padding: 30px 35px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 0 40px rgba(56,189,248,.35);
+}
+.modal-box h2 { color: #38bdf8; margin-top: 0; }
+.modal-box h3 { color: #7dd3fc; margin-top: 20px; }
+.modal-box p  { color: #cbd5e1; }
+.modal-box ul { padding-left: 20px; line-height: 2; }
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 20px;
+  cursor: pointer;
+}
+.modal-close:hover { color: #f87171; }
 
 .survey-overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.85);
