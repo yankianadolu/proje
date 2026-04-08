@@ -1,3 +1,5 @@
+const ANTHROPIC_API_KEY = "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
+  
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -18,24 +20,43 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-/* AI SIMÜLASYON */
-function askAI(){
-  const input=document.getElementById("ai-input").value.toLowerCase();
-  let answer="Bu konuda bir rehber öğretmenle konuşmanı öneririm.";
+async function askAI() {
+  const input = document.getElementById("ai-input").value.trim();
+  if (!input) return;
 
-  const rules=[
-    {keys:["zorbalık","alay","dalga"],reply:"Bu yaşadığın durum bir sınır ihlali olabilir."},
-    {keys:["ne yapmalıyım","çözüm"],reply:"Kanıt topla, engelle ve bildir."},
-    {keys:["merhaba","selam"],reply:"Merhaba! Nasıl yardımcı olabilirim?"}
-  ];
+  const responseBox = document.getElementById("ai-response");
+  responseBox.innerText = "Yanıt bekleniyor...";
+  document.getElementById("ai-input").value = "";
 
-  for(let r of rules){
-    for(let k of r.keys){
-      if(input.includes(k)) answer=r.reply;
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true"
+      },
+      body: JSON.stringify({
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 500,
+        system: "Sen YANKI'nın asistanısın. Sadece siber zorbalık konusunda yardımcı oluyorsun. Kısa, sade ve anlaşılır Türkçe cevaplar ver. Konu dışı sorulara 'Sadece siber zorbalık konusunda yardımcı olabilirim.' de.",
+        messages: [
+          { role: "user", content: input }
+        ]
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.content && data.content[0]) {
+      responseBox.innerText = data.content[0].text;
+    } else {
+      responseBox.innerText = "Bir hata oluştu, tekrar dene.";
     }
+  } catch (err) {
+    responseBox.innerText = "Bağlantı hatası: " + err.message;
   }
-
-  document.getElementById("ai-response").innerText=answer;
 }
 
 /* SURVEY */
