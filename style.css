@@ -84,12 +84,24 @@ canvas#bg { position: fixed; inset: 0; z-index: -1; }
 .modal-close:hover { color: #f87171; }
 
 /* AI WIDGET */
-.ai-widget {
+.ai-toggle {
   position: fixed; right: 20px; bottom: 20px;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #38bdf8; border: none; cursor: pointer;
+  font-size: 26px; z-index: 200;
+  box-shadow: 0 0 20px rgba(56,189,248,0.5);
+  transition: .2s;
+}
+.ai-toggle:hover { transform: scale(1.1); background: #7dd3fc; }
+
+.ai-widget {
+  position: fixed; right: 20px; bottom: 86px;
   background: #0f172a; border: 2px solid #38bdf8;
   border-radius: 16px; width: 300px; padding: 14px;
   z-index: 100; box-shadow: 0 0 30px rgba(56,189,248,0.2);
+  display: none;
 }
+.ai-widget.open { display: block; }
 .ai-header { font-weight: 700; color: #38bdf8; margin-bottom: 10px; font-size: 15px; }
 #ai-response {
   min-height: 60px; max-height: 200px; overflow-y: auto;
