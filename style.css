@@ -187,3 +187,9 @@ body{
 .ai-widget button:hover {
   background: #7dd3fc;
 }
+.instagram-link {
+  text-decoration: none;
+  color: inherit;
+  display: contents;
+}
+
