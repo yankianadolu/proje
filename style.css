@@ -44,7 +44,7 @@ canvas#bg { position: fixed; inset: 0; z-index: -1; }
 /* SURVEY */
 .survey-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,.85);
-  display: flex; justify-content: center; align-items: center; z-index: 500;
+  display: flex; justify-content: center; align-items: center; z-index: 100;
 }
 .survey-box {
   background: #0f172a; padding: 25px; border-radius: 16px; width: 320px;
@@ -63,10 +63,10 @@ canvas#bg { position: fixed; inset: 0; z-index: -1; }
 /* MODAL */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,.85);
-  display: none; justify-content: center; align-items: center;
+  display: none; justify-content: center; align-items: center; pointer-events: none;
   z-index: 999; padding: 20px;
 }
-.modal-overlay.active { display: flex; }
+.modal-overlay.active { display: flex; pointer-events: all; }
 .modal-box {
   background: #0f172a; border: 1px solid #38bdf8; border-radius: 20px;
   padding: 30px 35px; max-width: 600px; width: 100%;
