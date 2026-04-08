@@ -70,21 +70,3 @@ function answerSurvey(val) {
   }
 }
 
-/* BG ANİMASYON */
-const c = document.getElementById("bg"), ctx = c.getContext("2d");
-let w, h, particles = [];
-function resize() { w = c.width = innerWidth; h = c.height = innerHeight; }
-window.onresize = resize; resize();
-for (let i = 0; i < 120; i++) particles.push({ x: Math.random()*w, y: Math.random()*h, vx: Math.random()-.5, vy: Math.random()-.5 });
-function animate() {
-  ctx.clearRect(0, 0, w, h);
-  particles.forEach(p => {
-    p.x += p.vx; p.y += p.vy;
-    if (p.x < 0 || p.x > w) p.vx *= -1;
-    if (p.y < 0 || p.y > h) p.vy *= -1;
-    ctx.fillStyle = "#38bdf8";
-    ctx.fillRect(p.x, p.y, 2, 2);
-  });
-  requestAnimationFrame(animate);
-}
-animate();
