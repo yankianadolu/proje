@@ -41,7 +41,8 @@ async function askAI() {
       })
     });
     const data = await response.json();
-    responseBox.innerText = data.content?.[0]?.text ?? "Bir hata oluştu, tekrar dene.";
+   console.log(data);
+responseBox.innerText = data.content?.[0]?.text ?? (data.error?.message ?? "Bir hata oluştu.");
   } catch (err) {
     responseBox.innerText = "Bağlantı hatası: " + err.message;
   }
