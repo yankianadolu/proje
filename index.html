@@ -8,11 +8,9 @@
 </head>
 <body>
 
-
-
 <div class="navbar">
   <div class="logo">
- <img src="projelogo.png" alt="YANKI Logo" style="width:52px;height:52px;">
+    <img src="projelogo.png" alt="YANKI Logo">
     <span>YANKI</span>
   </div>
   <div class="nav-links">
@@ -23,66 +21,23 @@
 </div>
 
 <div id="home" class="page active">
-  <h1>YANKI:Siber Zorbalıkla Mücadele</h1>
+  <h1>YANKI: Siber Zorbalıkla Mücadele</h1>
   <p>Daha güvenli bir dijital dünya için buradayız.</p>
   <div class="card-grid card-grid-two">
-   <div class="card" ontouchstart="" onclick="openModal('bilgilendirme')">📘 Bilgilendirme</div>
-<div class="card" ontouchstart="" onclick="openModal('destek')">🤝 Destek</div>
-  </div>
-</div>
-<div id="modal-bilgilendirme" class="modal-overlay" onclick="closeModal('bilgilendirme')">
-  <div class="modal-box" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal('bilgilendirme')">✕</button>
-    <h2>📘 Siber Zorbalık Nedir?</h2>
-    <p>Siber zorbalık; internet, sosyal medya, mesajlaşma uygulamaları veya oyun platformları aracılığıyla bir kişiye yönelik kasıtlı, tekrarlayan ve zarar verici davranışlardır.</p>
-    <h3>⚠️ Siber Zorbalık Türleri</h3>
-    <ul>
-      <li><strong>Taciz:</strong> Sürekli rahatsız edici mesajlar veya yorumlar göndermek.</li>
-      <li><strong>Kimlik hırsızlığı:</strong> Birinin hesabını ele geçirerek onun adına paylaşım yapmak.</li>
-      <li><strong>Dışlama:</strong> Kişiyi kasıtlı olarak çevrimiçi gruplardan veya sohbetlerden uzak tutmak.</li>
-      <li><strong>İfşa etme:</strong> Birinin özel bilgilerini veya fotoğraflarını izinsiz paylaşmak.</li>
-      <li><strong>Siber takip:</strong> Kişiyi çevrimiçi ortamda sürekli izleyip tehdit etmek.</li>
-    </ul>
-    <h3>🔍 Nasıl Tanınır?</h3>
-    <p>Telefon veya bilgisayar kullanımı sonrası üzgün hissetmek, sosyal medyayı aniden bırakmak, okula gitmek istememe veya uyku sorunları yaşamak siber zorbalığa maruz kaldığının işaretleri olabilir.</p>
-    <h3>🛡️ Ne Yapmalısın?</h3>
-    <ul>
-      <li>Mesaj ve paylaşımların ekran görüntüsünü al, kanıtları sakla.</li>
-      <li>Zorbalık yapan kişiyi engelle ve bildir.</li>
-      <li>Güvendiğin bir yetişkine (ebeveyn, öğretmen) anlat.</li>
-      <li>Cevap verme — bu çoğu zaman zorbalığı büyütür.</li>
-    </ul>
-  </div>
-</div>
-
-<div id="modal-destek" class="modal-overlay" onclick="closeModal('destek')">
-  <div class="modal-box" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal('destek')">✕</button>
-    <h2>🤝 Siber Zorbalıkta Destek Kaynakları</h2>
-    <p>Siber zorbalığa maruz kalıyorsan yalnız değilsin. Aşağıdaki kurum ve kişilerden destek alabilirsin:</p>
-    <h3>🏫 Okul</h3>
-    <p>Rehber öğretmenine veya okul müdürüne durumu anlat. Okul, zorbalığa karışan öğrencilere yönelik önlem almakla yükümlüdür.</p>
-    <h3>👨‍👩‍👧 Aile</h3>
-    <p>Güvendiğin bir aile büyüğüne konuşmaktan çekinme. Aile desteği bu süreçte en önemli güç kaynaklarından biridir.</p>
-    <h3>📞 ALO 183 – Aile ve Sosyal Hizmetler Hattı</h3>
-    <p>Türkiye'de 7/24 ücretsiz aranabilir. Çocuk ve gençlere yönelik psikolojik destek ve yönlendirme sağlar.</p>
-    <h3>🌐 BTK – Bilgi Teknolojileri ve İletişim Kurumu</h3>
-    <p>ihbar.gov.tr adresi veya ALO 158 hattı üzerinden çevrimiçi taciz ve zararlı içerikleri şikâyet edebilirsin.</p>
-    <h3>🏛️ Emniyet / Siber Suçlar Birimi</h3>
-    <p>Ciddi tehdit veya taciz durumlarında en yakın emniyet müdürlüğüne ya da egm.gov.tr üzerinden siber suçlar birimine başvurabilirsin.</p>
+    <div class="card" onclick="openModal('bilgilendirme')">📘 Bilgilendirme</div>
+    <div class="card" onclick="openModal('destek')">🤝 Destek</div>
   </div>
 </div>
 
 <div id="projects" class="page">
-  <h1 class="red-title">PROJELERİMİZ</h1>
+  <h1>PROJELERİMİZ</h1>
   <div class="card-grid">
     <div class="card">Okul Seminerleri</div>
     <div class="card">Yapay Zeka Destekli "YANKI'YA SOR"</div>
- <div class="card" onclick="window.open('https://www.instagram.com/yanki.2026', '_blank')">
-  Instagram Hesabımız
+    <div class="card" onclick="window.open('https://www.instagram.com/yanki.2026', '_blank')">Instagram Hesabımız</div>
+  </div>
 </div>
-</div>
-  
+
 <div id="events" class="page">
   <h1>Etkinliklerimiz</h1>
   <div class="card-grid">
@@ -92,26 +47,6 @@
   </div>
 </div>
 
-<div id="survey" class="survey-overlay">
-  <div class="survey-box">
-    <h2>🧠 Sınır Algısı Mini Testi</h2>
-    <p id="surveyQuestion"></p>
-    <div class="btn-group">
-      <button class="btn-joke" onclick="answerSurvey('Şaka')">Şaka</button>
-      <button class="btn-bully" onclick="answerSurvey('Zorbalık')">Zorbalık</button>
-      <button class="btn-unsure" onclick="answerSurvey('Emin değilim')">Emin değilim</button>
-    </div>
-  </div>
-</div>
-
-<button class="ai-toggle" onclick="toggleChat()">🤖</button>
-<div class="ai-widget">
-  <div class="ai-header">🤖 YANKI'YA SOR</div>
-  <div id="ai-response"></div>
-  <input id="ai-input" placeholder="Soru sor...">
-  <button onclick="askAI()">Gönder</button>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+<div id="modal-bilgilendirme" class="modal-overlay" onclick="closeModal('bilgilendirme')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <button class="modal-close"
