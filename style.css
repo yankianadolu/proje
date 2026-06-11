@@ -316,3 +316,15 @@ body {
   .logo img { width: 42px; height: 42px; }
   .logo { font-size: 18px; }
 }
+.event-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.event-photos img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
