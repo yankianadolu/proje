@@ -52,11 +52,9 @@ function askAI() {
     : "Bu konuda sana yardımcı olmak isterim. Soruyu biraz farklı yazabilir misin? Örneğin: 'siber zorbalık nedir', 'ne yapmalıyım' gibi sorular sorabilirsin.";
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById("ai-input").addEventListener("keydown", function(e) {
-    if (e.key === "Enter") askAI();
-  });
-});
+function toggleChat() {
+  document.querySelector('.ai-widget').classList.toggle('open');
+}
 
 const surveyQuestions = [
   "Bir arkadaşının fotoğrafını izinsiz paylaşıp alay etmek ne tür bir davranıştır?",
@@ -65,9 +63,9 @@ const surveyQuestions = [
 ];
 
 let sIndex = 0;
-const qBox = document.getElementById("surveyQuestion");
 
 function renderQuestion() {
+  const qBox = document.getElementById("surveyQuestion");
   if (sIndex < surveyQuestions.length) {
     qBox.innerText = surveyQuestions[sIndex];
   } else {
@@ -75,13 +73,14 @@ function renderQuestion() {
   }
 }
 
-renderQuestion();
-
 function answerSurvey(val) {
   sIndex++;
   renderQuestion();
 }
 
-function toggleChat() {
-  document.querySelector('.ai-widget').classList.toggle('open');
-}
+document.addEventListener('DOMContentLoaded', function () {
+  renderQuestion();
+  document.getElementById("ai-input").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") askAI();
+  });
+});
