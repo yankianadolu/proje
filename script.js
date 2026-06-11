@@ -1,7 +1,14 @@
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  
+
+  if(id === 'home') {
+    animateCounters();
+  }
 }
+
 
 function openModal(id) {
   document.getElementById('modal-' + id).classList.add('active');
@@ -11,77 +18,166 @@ function closeModal(id) {
   document.getElementById('modal-' + id).classList.remove('active');
 }
 
+
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     ['bilgilendirme', 'destek'].forEach(id => closeModal(id));
+    closeLightbox();
   }
 });
 
+
 const qaList = [
-  { k: ["siber zorbalık nedir", "tanım", "ne demek", "nedir"], c: "Siber zorbalık; internet, sosyal medya, mesajlaşma uygulamaları veya oyun platformları aracılığıyla bir kişiye yönelik kasıtlı, tekrarlayan ve zarar verici davranışlardır. Hakaret, tehdit, dışlama ve ifşa etme gibi biçimlerde görülür." },
-  { k: ["ne yapmalıyım", "zorbalığa uğruyorum", "yardım", "ne yapabilirim"], c: "Güvendiğin bir yetişkine anlat. Zorba kişiyi engelle ve bildir. Mesajların ekran görüntüsünü alarak kanıtları sakla. Cevap verme — bu çoğu zaman zorbalığı büyütür." },
-  { k: ["nasıl şikayet", "şikayet etmek", "ihbar", "şikâyet"], c: "Bulunduğun platformda 'Şikayet Et' butonunu kullanabilirsin. Ayrıca ihbar.gov.tr adresinden veya ALO 158 hattını arayarak BTK'ya bildirebilirsin." },
-  { k: ["cezası", "suç mu", "hukuki", "kanun", "ceza"], c: "Evet, siber zorbalık Türk Ceza Kanunu kapsamında suçtur. Tehdit, hakaret ve kişisel verilerin paylaşılması gibi eylemler hapis veya para cezasına yol açabilir." },
-  { k: ["kanıt", "ekran görüntüsü", "ispat", "delil"], c: "Ekran görüntüsü alarak tarih ve saat bilgisinin göründüğünden emin ol. Bu kanıtları güvenli bir yerde sakla; şikâyet sürecinde çok işine yarayacak." },
-  { k: ["engelle", "engellemek", "blokla"], c: "Seni rahatsız eden kişiyi platformda engelleyerek iletişimi kesebilirsin. Engelleme sonrası 'Bildir' seçeneğini de kullanmayı unutma." },
-  { k: ["aileme söylemeli", "aileye söyle", "ebeveyn", "anneme", "babama"], c: "Evet, güvendiğin bir aile büyüğüne durumu anlatmak en doğru adımdır. Aile desteği bu süreçte en önemli güç kaynaklarından biridir." },
-  { k: ["tehdit", "tehdit ediliyor", "tehdit alıyorum"], c: "Tehdit ciddi bir durumdur. Hemen bir yetişkine haber ver ve gerekirse en yakın emniyet müdürlüğüne ya da egm.gov.tr üzerinden siber suçlar birimine başvur." },
-  { k: ["alo 183", "183", "psikolojik destek", "destek hattı"], c: "ALO 183, Türkiye'de 7/24 ücretsiz aranabilen Aile ve Sosyal Hizmetler Hattı'dır. Çocuk ve gençlere yönelik psikolojik destek ve yönlendirme sağlar." },
-  { k: ["158", "btk", "bilgi teknolojileri", "ihbar.gov"], c: "BTK ALO 158 hattı veya ihbar.gov.tr üzerinden çevrimiçi taciz ve zararlı içerikleri şikâyet edebilirsin." },
-  { k: ["okul", "öğretmen", "rehber", "müdür"], c: "Rehber öğretmenine veya okul müdürüne durumu anlat. Okul, zorbalığa karışan öğrencilere yönelik önlem almakla yükümlüdür." },
-  { k: ["dışlama", "gruptan atmak", "görmezden", "dışlanıyorum"], c: "Birini kasıtlı olarak çevrimiçi gruplardan dışlamak da bir siber zorbalık türüdür. Durumu bir yetişkine veya platform yöneticisine bildir." },
-  { k: ["kimlik hırsızlığı", "hesap ele geçirme", "sahte hesap"], c: "Birisinin hesabını ele geçirerek onun adına paylaşım yapmak kimlik hırsızlığıdır ve suçtur. Şifrelerini düzenli değiştir, iki faktörlü doğrulamayı etkinleştir." },
-  { k: ["fotoğraf", "video", "ifşa", "paylaşmak", "izinsiz"], c: "Birinin özel fotoğraf veya videolarını izinsiz paylaşmak hem suçtur hem de ciddi bir siber zorbalık türüdür. Hemen bir yetişkine ve yetkililere bildir." },
-  { k: ["sosyal medya", "instagram", "twitter", "tiktok"], c: "Sosyal medyada zorbalığa uğrarsan o kişiyi engelle, içeriği şikayet et ve ekran görüntüsü al. Gerekirse platformun destek merkeziyle iletişime geç." },
-  { k: ["oyun", "online oyun", "gaming"], c: "Online oyunlarda zorbalık da siber zorbalıktır. Oyunun şikayet sistemini kullan, o oyuncuyu sessize al veya engelle." },
-  { k: ["depresyon", "kendimi kötü", "üzgün", "ağlıyorum"], c: "Siber zorbalık ciddi psikolojik etkilere yol açabilir. Kendini kötü hissediyorsan bunu içinde tutma. Bir yetişkine anlat ya da ALO 183'ü ara." },
-  { k: ["nasıl korunurum", "korunma", "önlem", "güvende"], c: "Güçlü şifreler kullan. Kişisel bilgilerini herkesle paylaşma. Gizlilik ayarlarını kontrol et. Tanımadığın kişilerin isteklerini kabul etme." },
-  { k: ["merhaba", "selam", "hey", "hi"], c: "Merhaba! Siber zorbalıkla ilgili aklına takılan her şeyi sorabilirsin. Örneğin: 'Siber zorbalık nedir?', 'Ne yapmalıyım?', 'Nasıl şikayet ederim?' gibi sorular sorabilirsin." },
-  { k: ["teşekkür", "sağ ol", "tamam", "anladım"], c: "Rica ederim! Başka soruların olursa buradayım. Unutma, yalnız değilsin." },
+  { k: ["siber zorbalık nedir", "tanım", "ne demek", "nedir"], c: "Siber zorbalık; internet, sosyal medya veya oyun platformlarında bir kişiye yönelik kasıtlı, tekrarlayan ve zarar verici davranışlardır. Hakaret, dışlama ve ifşa gibi türleri bulunur." },
+  { k: ["ne yapmalıyım", "zorbalığa uğruyorum", "yardım", "ne yapabilirim"], c: "Güvendiğin bir yetişkine (ailene, öğretmenine) anlat. Zorbalık yapan kişiyi hemen engelle ve bildiri butonunu kullan. Paylaşımların ekran görüntüsünü alarak kanıtları mutlaka sakla." },
+  { k: ["şikayet", "ihbar", "şikâyet"], c: "İçeriği platforma bildirebilirsin. Ayrıca Türkiye'de ihbar.gov.tr adresinden veya ALO 158 hattını arayarak BTK'ya resmi şikayette bulunabilirsin." },
+  { k: ["cezası", "suç mu", "hukuki", "kanun", "ceza"], c: "Evet, siber zorbalık Türk Ceza Kanunu kapsamında suçtur! Tehdit, hakaret ve kişisel verilerin izinsiz paylaşılması hapis cezasına kadar yol açabilir." },
+  { k: ["kanıt", "ekran görüntüsü", "ispat", "delil"], c: "Ekran görüntüsü alırken tarih, saat ve profil adının net görünmesine dikkat et. Bu delilleri güvenli bir klasörde sakla." },
+  { k: ["aileme", "ebeveyn", "anneme", "babama"], c: "Kesinlikle ailene söylemelisin. Bu durum senin suçun değil ve utanman gereken bir şey yok. Aile desteği en güçlü kalkanındır." },
+  { k: ["alo 183", "183", "psikolojik destek"], c: "ALO 183, Çocuk ve gençlere yönelik psikolojik ve sosyal destek sağlayan 7/24 ücretsiz bir bakanlık hattıdır." },
+  { k: ["okul", "öğretmen", "rehber"], c: "Okul rehber öğretmenleri bu süreçleri gizlilikle yönetir. Durumu onlarla paylaşmaktan çekinme." },
+  { k: ["merhaba", "selam", "hey"], c: "Merhaba! Siber zorbalıkla mücadelede rehberlik etmek için buradayım. Bana 'Ne yapmalıyım?', 'Suç mu?' gibi sorular sorabilirsin." },
+  { k: ["teşekkür", "sağ ol", "anladım"], c: "Rica ederim! Unutma, dijital dünyada asla yalnız değilsin. Kendine iyi bak! ✨" }
 ];
+
 
 function askAI() {
   const inputEl = document.getElementById("ai-input");
-  const input = inputEl.value.toLowerCase().trim();
+  const input = inputEl.value.trim();
   const responseBox = document.getElementById("ai-response");
   if (!input) return;
+
+  // Kullanıcı baloncuğunu ekle
+  const userBubble = document.createElement("div");
+  userBubble.className = "chat-bubble user-bubble";
+  userBubble.innerText = input;
+  responseBox.appendChild(userBubble);
+  
   inputEl.value = "";
-  const match = qaList.find(item => item.k.some(k => input.includes(k)));
-  responseBox.innerText = match
-    ? match.c
-    : "Bu konuda sana yardımcı olmak isterim. Soruyu biraz farklı yazabilir misin? Örneğin: 'siber zorbalık nedir', 'ne yapmalıyım' gibi sorular sorabilirsin.";
+  responseBox.scrollTop = responseBox.scrollHeight;
+
+  
+  const typingBubble = document.createElement("div");
+  typingBubble.className = "chat-bubble bot-bubble typing-bubble";
+  typingBubble.innerHTML = "<span>.</span><span>.</span><span>.</span>";
+  responseBox.appendChild(typingBubble);
+  responseBox.scrollTop = responseBox.scrollHeight;
+
+ 
+  setTimeout(() => {
+
+    typingBubble.remove();
+
+    const cleanInput = input.toLowerCase();
+    const match = qaList.find(item => item.k.some(k => cleanInput.includes(k)));
+    const botReply = match ? match.c : "Bu konuda tam aradığın cevabı bulamadım ama siber zorbalığa uğruyorsan kanıt toplayıp engellemeni ve bir yetişkine başvurmanı öneririm. Başka nasıl yardımcı olabilirim?";
+    
+    const botBubble = document.createElement("div");
+    botBubble.className = "chat-bubble bot-bubble";
+    botBubble.innerText = botReply;
+    responseBox.appendChild(botBubble);
+    
+    responseBox.scrollTop = responseBox.scrollHeight;
+  }, 1000);
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("ai-input").addEventListener("keydown", function(e) {
     if (e.key === "Enter") askAI();
   });
+
+  animateCounters();
 });
 
+
 const surveyQuestions = [
-  "Bir arkadaşının fotoğrafını izinsiz paylaşıp alay etmek ne tür bir davranıştır?",
-  "Birine sürekli istemediği hâlde mesaj atmak ne tür bir davranıştır?",
-  "Birini çevrimiçi sohbet grubundan kasıtlı olarak dışlamak ne tür bir davranıştır?",
+  "Bir arkadaşının komik çıktığı bir fotoğrafını izinsiz paylaşıp grupta dalga geçmek:",
+  "Birine sosyal medyadan oyun daveti veya mesajı harici, sürekli 'neredesin, kimlesin' diye ısrarla yazmak:",
+  "Sınıf grubunda tartışılan bir arkadaşını ani bir kararla gruptan atmak ve onu yok saymak:"
 ];
 
 let sIndex = 0;
 const qBox = document.getElementById("surveyQuestion");
 
 function renderQuestion() {
+  const wrapper = document.getElementById("survey-content-wrapper");
   if (sIndex < surveyQuestions.length) {
     qBox.innerText = surveyQuestions[sIndex];
   } else {
-    document.getElementById("survey").style.display = "none";
+  
+    wrapper.innerHTML = `
+      <div style="padding: 10px 0;">
+        <span style="font-size: 60px; filter: drop-shadow(0 0 15px #38bdf8);">🛡️</span>
+        <h2 style="color: #2dd4bf; margin-top: 15px;">Tebrikler, Testi Tamamladın!</h2>
+        <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6; margin: 14px 0;">
+          Dijital sınırları başarıyla analiz ettin ve <strong>"Dijital Muhafız"</strong> unvanı kazandın. Rozetin profilinde aktif edildi!
+        </p>
+        <button onclick="closeSurveyPanel()" style="background:#38bdf8; color:#020617; font-weight:700; border:none; padding:14px; border-radius:12px; cursor:pointer; width:100%;">
+          Sitede Keşfe Başla
+        </button>
+      </div>
+    `;
+ 
+    document.getElementById("user-badge-status").style.display = "inline-block";
   }
 }
 
-renderQuestion();
+function closeSurveyPanel() {
+  document.getElementById("survey").style.display = "none";
+}
 
 function answerSurvey(val) {
   sIndex++;
   renderQuestion();
 }
 
+renderQuestion();
+
+
 function toggleChat() {
   document.querySelector('.ai-widget').classList.toggle('open');
+}
+
+
+function toggleEventGallery(card, event) {
+  if (event.target.tagName === 'IMG') return;
+  card.classList.toggle('gallery-open');
+}
+
+
+function openLightbox(imgElement, event) {
+  event.stopPropagation();
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+
+  lightboxImg.src = imgElement.src;
+  lightboxCaption.innerText = imgElement.alt;
+  lightbox.classList.add('lightbox-active');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('lightbox-active');
+}
+
+
+function animateCounters() {
+  const counters = document.querySelectorAll('.stat-number');
+  counters.forEach(counter => {
+    counter.innerText = '0';
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const speed = target / 40; // Hız ayarı
+
+      if (count < target) {
+        counter.innerText = Math.ceil(count + speed);
+        setTimeout(updateCount, 30);
+      } else {
+        counter.innerText = target + "+";
+      }
+    };
+    updateCount();
+  });
 }
