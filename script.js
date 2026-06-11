@@ -13,7 +13,7 @@ function closeModal(id) {
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    ['bilgilendirme', 'destek', 'etkinlik21', 'etkinlik30', 'etkinlik7mayis'].forEach(id => closeModal(id));
+    ['bilgilendirme', 'destek'].forEach(id => closeModal(id));
   }
 });
 
@@ -52,9 +52,11 @@ function askAI() {
     : "Bu konuda sana yardımcı olmak isterim. Soruyu biraz farklı yazabilir misin? Örneğin: 'siber zorbalık nedir', 'ne yapmalıyım' gibi sorular sorabilirsin.";
 }
 
-function toggleChat() {
-  document.querySelector('.ai-widget').classList.toggle('open');
-}
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById("ai-input").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") askAI();
+  });
+});
 
 const surveyQuestions = [
   "Bir arkadaşının fotoğrafını izinsiz paylaşıp alay etmek ne tür bir davranıştır?",
@@ -63,9 +65,9 @@ const surveyQuestions = [
 ];
 
 let sIndex = 0;
+const qBox = document.getElementById("surveyQuestion");
 
 function renderQuestion() {
-  const qBox = document.getElementById("surveyQuestion");
   if (sIndex < surveyQuestions.length) {
     qBox.innerText = surveyQuestions[sIndex];
   } else {
@@ -73,14 +75,13 @@ function renderQuestion() {
   }
 }
 
+renderQuestion();
+
 function answerSurvey(val) {
   sIndex++;
   renderQuestion();
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  renderQuestion();
-  document.getElementById("ai-input").addEventListener("keydown", function(e) {
-    if (e.key === "Enter") askAI();
-  });
-});
+function toggleChat() {
+  document.querySelector('.ai-widget').classList.toggle('open');
+}
