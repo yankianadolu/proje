@@ -13,7 +13,7 @@ function closeModal(id) {
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    ['bilgilendirme', 'destek'].forEach(id => closeModal(id));
+    ['bilgilendirme', 'destek', 'etkinlik21', 'etkinlik30', 'etkinlik7mayis'].forEach(id => closeModal(id));
   }
 });
 
